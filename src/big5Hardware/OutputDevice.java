@@ -5,7 +5,7 @@ public class OutputDevice {
         System.out.println("演算結果は" + result + "です");
     }
 
-    public void displayError(String errorMessage) {
-        System.err.print(errorMessage);
+    public void displayError(String outputErrorMessage) {
+        System.err.print(outputErrorMessage);
     }
 }
