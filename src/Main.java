@@ -17,5 +17,8 @@ public class Main {
         controlUnit.start();
         controlUnit.fetchInput();
         controlUnit.excuteOperation();
+        controlUnit.outputResult();
+        controlUnit.end();
+
     }
 }

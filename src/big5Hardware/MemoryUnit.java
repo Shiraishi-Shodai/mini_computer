@@ -1,5 +1,6 @@
 package src.big5Hardware;
 import java.util.Arrays;
+import src.Constants;
 import src.customExceptions.*;
 
 public class MemoryUnit {
@@ -8,11 +9,11 @@ public class MemoryUnit {
     private int operand1;
     private int operand2;
     private String operator;
-    private int result; // 演算結果
+    private double result; // 演算結果
 
     // 入力データを保存する
     public void storeInput(String inputData) throws Exception {
-        System.out.println("⑤記憶装置さん：　入力装置さんありがとう。渡されたデータは大切に記憶しておくね");
+        System.out.println("5. 記憶装置さん：　入力装置さんありがとう。渡されたデータは大切に記憶しておくね");
         this.inputData = inputData;
         
         String splitData [] = this.parseData();
@@ -26,7 +27,7 @@ public class MemoryUnit {
 
     // 保存されたデータを演算子・オペランドに分解する
     public String [] parseData() {
-        String splitData [] = this.inputData.split(" ");
+        String splitData [] = this.inputData.trim().split(" ");
         return splitData;
     }
 
@@ -38,20 +39,19 @@ public class MemoryUnit {
         3. 演算子が(+, -, *, ÷)以外の値
         */
        
-        System.out.println("⑥記憶装置さん：　入力装置さんから受け取ったデータをチェックするね");
+        System.out.println("6. 記憶装置さん：　入力装置さんから受け取ったデータをチェックするね");
 
         // 1. スペースで区切ったときに配列の要素数が3でない
-        if(splitData.length != 3) throw new InvalidArraySizeException("入力データ数が無効です");
+        if(splitData.length != Constants.EXPECTED_INPUT_DATA_SIZE) throw new InvalidArraySizeException("入力データ数が無効です");
 
         // 2. オペランドを整数に変換できない。(値が大きすぎる場合や、小さすぎる場合は今回は無視する)
         int operand1 = Integer.parseInt(splitData[0]);
         int operand2 = Integer.parseInt(splitData[2]);
 
         // 3. 演算子が(+, -, *, ÷)以外の値
-        String operators [] = {"+", "-", "*", "/"};
         String inputOperator = splitData[1];
-        
-        if(Arrays.stream(operators).noneMatch(inputOperator::equals)) throw new InvalidOperatorException("演算子が無効です");
+
+        if(Arrays.stream(Constants.VALID_OPERATORS.values()).map(Constants.VALID_OPERATORS::getValue).noneMatch(inputOperator::equals)) throw new InvalidOperatorException("演算子が無効です");
         
     }
 
@@ -67,10 +67,10 @@ public class MemoryUnit {
     }
     
     // → 演算結果を保存する
-    public void storeResult(int result) {
+    public void storeResult(double result) {
         this.result = result;
     }
-    public int getResult() {
+    public double getResult() {
         return this.result;
     }
 
