@@ -75,7 +75,7 @@ public class ControlUnit {
 
     // 記憶装置に出力装置に演算結果を渡すように指示
     public void passDataToOutputDevice() {
-        System.out.println("12制御装置さん：　記憶装置さんは出力装置さんに演算結果を渡してください。");
+        System.out.println("8. 制御装置さん：　記憶装置さんは出力装置さんに演算結果を渡してください。");
     }  
 
     // 出力装置に出力を指示
