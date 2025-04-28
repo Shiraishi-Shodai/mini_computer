@@ -1,4 +1,4 @@
-package  big5Hardware;
+package src.big5Hardware;
 
 public class InputDevice {
     private String inputData;
@@ -9,7 +9,7 @@ public class InputDevice {
     }
     
     // 入力されたデータを記憶装置に保存
-    public void sendToMemory(MMemoryUnit memoryUnit) {
+    public void sendToMemory(MemoryUnit memoryUnit) {
         memoryUnit.storeInput(this.inputData);
     }
 }

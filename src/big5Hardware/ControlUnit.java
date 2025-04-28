@@ -1,5 +1,4 @@
-package  big5Hardware;
-import big5Hardware*;
+package src.big5Hardware;
 
 public class ControlUnit {
     private  MemoryUnit memoryUnit;

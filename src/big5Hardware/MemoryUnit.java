@@ -1,4 +1,4 @@
-package  big5Hardware;
+package src.big5Hardware;
 
 public class MemoryUnit {
 // 入力されたそのままのデータ
