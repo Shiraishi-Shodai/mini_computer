@@ -1,18 +1,18 @@
 package src.big5Hardware;
 import java.util.Arrays;
-import src.customErros.*;
+import src.customExceptions.*;
 
 public class MemoryUnit {
-// 入力されたそのままのデータ
-    private  String inputData;
+
+    private  String inputData; // 入力されたそのままのデータ
     private int operand1;
     private int operand2;
     private String operator;
-    private int result;
+    private int result; // 演算結果
 
     // 入力データを保存する
     public void storeInput(String inputData) throws Exception {
-        System.out.print("⑤記憶装置さん：　入力装置さんありがとう。渡されたデータは大切に記憶しておくね");
+        System.out.println("⑤記憶装置さん：　入力装置さんありがとう。渡されたデータは大切に記憶しておくね");
         this.inputData = inputData;
         
         String splitData [] = this.parseData();
@@ -24,6 +24,13 @@ public class MemoryUnit {
         this.operator = splitData[1];
     }
 
+    // 保存されたデータを演算子・オペランドに分解する
+    public String [] parseData() {
+        String splitData [] = this.inputData.split(" ");
+        return splitData;
+    }
+
+    // 入力データが正確に入力されているかチェック
     public void  inputDataErrorCheck(String [] splitData) throws Exception{
         /*データエラーのパターン
         1. スペースで区切ったときに配列の要素数が3でない
@@ -31,7 +38,7 @@ public class MemoryUnit {
         3. 演算子が(+, -, *, ÷)以外の値
         */
        
-        System.out.print("⑥記憶装置さん：　入力装置さんから受け取ったデータをチェックするね");
+        System.out.println("⑥記憶装置さん：　入力装置さんから受け取ったデータをチェックするね");
 
         // 1. スペースで区切ったときに配列の要素数が3でない
         if(splitData.length != 3) throw new InvalidArraySizeException("入力データ数が無効です");
@@ -46,12 +53,6 @@ public class MemoryUnit {
         
         if(Arrays.stream(operators).noneMatch(inputOperator::equals)) throw new InvalidOperatorException("演算子が無効です");
         
-    }
-
-    // 保存されたデータを演算子・オペランドに分解する
-    public String [] parseData() {
-        String splitData [] = this.inputData.split(" ");
-        return splitData;
     }
 
     public int getOperand1() {

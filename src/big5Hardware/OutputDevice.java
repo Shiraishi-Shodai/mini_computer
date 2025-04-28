@@ -6,6 +6,6 @@ public class OutputDevice {
     }
 
     public void displayError(String outputErrorMessage) {
-        System.err.print(outputErrorMessage);
+        System.err.println("出力装置さん" + outputErrorMessage);
     }
 }

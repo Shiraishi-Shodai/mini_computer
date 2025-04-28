@@ -1,4 +1,4 @@
-package src.customErros;
+package src.customExceptions;
 
 public class InvalidArraySizeException extends Exception {
     public InvalidArraySizeException(String message) {

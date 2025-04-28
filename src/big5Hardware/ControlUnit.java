@@ -1,4 +1,5 @@
 package src.big5Hardware;
+import src.customExceptions.*;
 
 public class ControlUnit {
     private  MemoryUnit memoryUnit;
@@ -35,12 +36,13 @@ public class ControlUnit {
             this.handleOperationError(errorTiming, "オペランドが数値に変換できません");
         } catch(InvalidOperatorException e) {
             this.handleOperationError(errorTiming, e.getMessage());
-        } catch(Error e) {
+        } catch(Exception e) {
             this.handleOperationError(errorTiming, "原因不明のエラー");
 
         }
          finally {
             this.end();
+            System.exit(1);
         }
     }
 
@@ -60,6 +62,7 @@ public class ControlUnit {
             this.handleOperationError(errorTiming, e.getMessage());
         } finally {
             this.end();
+            System.exit(1);
         }
     }
 

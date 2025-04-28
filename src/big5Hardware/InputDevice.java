@@ -12,7 +12,7 @@ public class InputDevice {
     }
     
     // 入力されたデータを記憶装置に保存
-    public void sendToMemory(MemoryUnit memoryUnit) {
+    public void sendToMemory(MemoryUnit memoryUnit) throws Exception {
         System.out.print("④入力装置さん：　記憶装置さん、ユーザーさんから入力されたデータを渡しておくね！");
         memoryUnit.storeInput(inputData);
     }

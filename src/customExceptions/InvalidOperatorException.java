@@ -1,4 +1,4 @@
-package src.customErros;
+package src.customExceptions;
 
 public class InvalidOperatorException extends Exception {
     public InvalidOperatorException(String message) {
